@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>My Map Set Name (Google Maps Export from Global Mapper)</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+    var G = google.maps;
+    var map;
+    
+    var customMapType = new G.ImageMapType
+      (
+        {
+        getTileUrl: function(coord, zoom)
+          {
+          var normalizedCoord = getNormalizedCoord(coord, zoom);
+          if (!normalizedCoord) { return null; }
+          
+          if ( zoom == 9 && normalizedCoord.x >= 190 && normalizedCoord.x <= 190 && normalizedCoord.y >= 290 && normalizedCoord.y <= 290 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 10 && normalizedCoord.x >= 380 && normalizedCoord.x <= 381 && normalizedCoord.y >= 580 && normalizedCoord.y <= 580 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 11 && normalizedCoord.x >= 761 && normalizedCoord.x <= 763 && normalizedCoord.y >= 1160 && normalizedCoord.y <= 1161 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 12 && normalizedCoord.x >= 1523 && normalizedCoord.x <= 1526 && normalizedCoord.y >= 2320 && normalizedCoord.y <= 2322 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 13 && normalizedCoord.x >= 3047 && normalizedCoord.x <= 3052 && normalizedCoord.y >= 4640 && normalizedCoord.y <= 4644 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 14 && normalizedCoord.x >= 6095 && normalizedCoord.x <= 6104 && normalizedCoord.y >= 9280 && normalizedCoord.y <= 9289 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 15 && normalizedCoord.x >= 12190 && normalizedCoord.x <= 12209 && normalizedCoord.y >= 18561 && normalizedCoord.y <= 18578 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 16 && normalizedCoord.x >= 24381 && normalizedCoord.x <= 24418 && normalizedCoord.y >= 37122 && normalizedCoord.y <= 37157 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 17 && normalizedCoord.x >= 48763 && normalizedCoord.x <= 48837 && normalizedCoord.y >= 74244 && normalizedCoord.y <= 74314 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 18 && normalizedCoord.x >= 97526 && normalizedCoord.x <= 97675 && normalizedCoord.y >= 148488 && normalizedCoord.y <= 148629 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20profundidademaxima//GOOGLEMAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          return null;
+        },
+
+        alt: "My Map Set Name",
+        tileSize: new G.Size(256, 256),
+        isPng: true,
+        maxZoom: 18,
+        minZoom: 9,
+        opacity: 0.90,
+        name: "My Map Set Name"
+      }
+    )
+
+    function getNormalizedCoord(coord, zoom)
+    {
+      var y = coord.y;
+      var x = coord.x;
+      
+      var tileRange = 1 << zoom;
+      
+      if (y < 0 || y >= tileRange) { return null; }
+      if (x < 0 || x >= tileRange)
+      {
+        x = (x % tileRange + tileRange) % tileRange;
+      }
+      
+      return { x: x, y: y };
+    }
+
+    function initialize()
+    {
+      var myLatlng = new G.LatLng(-23.563592,-46.054687);
+      var myOptions = {
+        center: myLatlng,
+        zoom: 9,
+        mapTypeId: G.MapTypeId.SATELLITE,
+        mapTypeControl: true,
+        overviewMapControl: false,
+        scaleControl: false,
+        streetViewControl: true,
+        panControl: true,
+        zoomControl: true,
+        zoomControlOptions: { style: google.maps.ZoomControlStyle.DEFAULT }
+      };
+      
+      map = new G.Map(document.getElementById("map_canvas"), myOptions);
+      map.overlayMapTypes.insertAt(0, customMapType);
+    }
+    </script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas" style="width: 100%; height: 800px; margin: 0px 0px 0px 0px; float: middle;"></div>
+</body> </html>
